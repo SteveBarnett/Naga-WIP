@@ -41,10 +41,12 @@
     }
   }
   ul {
+    flex-basis: 33%;
     list-style: none;
     // @media (min-width: $bp-s) {
-      padding: 1em;
+      padding: 1em 1em 1em 0;
     // }
+    margin-left: 0;
   }
   li {
     margin-bottom: 0.5em;

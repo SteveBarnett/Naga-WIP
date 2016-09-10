@@ -1,7 +1,7 @@
 <?php
 function load_theme_styles_and_scripts() {
   if ( isset($_COOKIE['cachedCSS']) && $_COOKIE['cachedCSS'] === 'true' ) {
-    wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/css/style.min.css', null, '1.01', 'all' );
+    wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/css/style.min.css', null, '1.0.2', 'all' );
   }
   	wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/html5shiv.min.js', null, '1.0', true );
 }
