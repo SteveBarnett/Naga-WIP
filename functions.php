@@ -34,11 +34,24 @@ function trimmed_classes($classes, $item){
 
 add_filter('nav_menu_css_class' , 'trimmed_classes' , 10 , 2);
 
-/* remove emoji js junk */
-
-function disable_wp_emojicons() {
+function disable_wp_unwanted_stuff() {
+  /* remove emoji js junk */
   remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
   remove_action( 'wp_print_styles', 'print_emoji_styles' );
+  wp_deregister_script( 'wp-embed' );
+
+  // Remove the REST API endpoint.
+  remove_action('rest_api_init', 'wp_oembed_register_route');
+
+  // Turn off oEmbed auto discovery.
+  // Don't filter oEmbed results.
+  remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
+
+  // Remove oEmbed discovery links.
+  remove_action('wp_head', 'wp_oembed_add_discovery_links');
+
+  // Remove oEmbed-specific JavaScript from the front-end and back-end.
+  remove_action('wp_head', 'wp_oembed_add_host_js');
 }
 
-add_action( 'init', 'disable_wp_emojicons' );
+add_action( 'init', 'disable_wp_unwanted_stuff' );
