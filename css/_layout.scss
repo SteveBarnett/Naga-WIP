@@ -1,0 +1,45 @@
+img {
+  border-width: 0;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+  max-width: 100%;
+  height: auto;
+}
+
+html {
+  border-top: solid 6px $red;
+}
+
+main,
+[role="navigation"],
+[role="contentinfo"] {
+  // Preferred measure: 22-38em
+  padding-left: 1em;
+  padding-right: 1em;
+  @media (min-width: $bp-s) {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  @media (min-width: $bp-m) {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+  @media (min-width: $bp-l) {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+  @media (min-width: $bp-xl) {
+    padding-left: 25%;
+    padding-right: 25%;
+  }
+}
+
+main {
+  margin-bottom: 4em;
+}
+
+.post-meta {
+  padding-bottom: 1em;
+  border-bottom: solid 1px $grey;
+  margin-bottom: 1em;
+}
