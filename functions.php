@@ -18,6 +18,7 @@ function load_css_in_header() {
         document.cookie = 'cachedCSS=true; expires=' + expires;
     </script>
   <?php
+      wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/css/style.min.css', null, '1.0.2', 'all' );
   endif;
 }
 add_action('wp_head', 'load_css_in_header', 30);
