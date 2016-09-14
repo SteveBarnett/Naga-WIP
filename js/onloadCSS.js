@@ -1,0 +1,1 @@
+function onloadCSS(a,b){function d(){!c&&b&&(c=!0,b.call(a))}var c;a.addEventListener&&a.addEventListener("load",d),a.attachEvent&&a.attachEvent("onload",d),"isApplicationInstalled"in navigator&&"onloadcssdefined"in a&&a.onloadcssdefined(d)}

@@ -1,12 +1,21 @@
 <?php
 function load_theme_styles_and_scripts() {
+
+
+
+
   if ( isset($_COOKIE['cachedCSS']) && $_COOKIE['cachedCSS'] === 'true' ) {
+    // this will be critical CSS if style.min.css gets too big
     wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/css/style.min.css', null, '1.0.2', 'all' );
   }
-  	wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/html5shiv.min.js', null, '1.0', true );
+
+  // load html5shiv in the footer
+  wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/html5shiv.min.js', null, '1.0', true );
 }
+
 add_action('wp_enqueue_scripts', 'load_theme_styles_and_scripts');
 
+// load CSS in the head for first visit
 function load_css_in_header() {
   if ( !isset($_COOKIE['cachedCSS']) || $_COOKIE['cachedCSS'] !== 'true' ) :
   ?>
@@ -14,13 +23,21 @@ function load_css_in_header() {
       <?php echo file_get_contents( get_template_directory_uri() . '/css/style.min.css' ); ?>
     </style>
     <script>
+        <?php echo file_get_contents( get_template_directory_uri() . '/js/loadCSS.js' ); ?>
+        <?php echo file_get_contents( get_template_directory_uri() . '/js/onloadCSS.js' ); ?>
+        var stylesheet = loadCSS( "<?php echo get_template_directory_uri() . '/css/style.min.css'; ?>" );
+        onloadCSS( stylesheet, function() {
         var expires = new Date(+new Date + (7 * 24 * 60 * 60 * 1000)).toUTCString();
-        document.cookie = 'cachedCSS=true; expires=' + expires;
+          document.cookie = 'cachedCSS=true; expires=' + expires;
+        });
     </script>
+    <noscript>
+      <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '/css/style.min.css'; ?>">
+    </noscript>
   <?php
-      wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/css/style.min.css', null, '1.0.2', 'all' );
   endif;
 }
+
 add_action('wp_head', 'load_css_in_header', 30);
 
 // register_nav_menus( array(
