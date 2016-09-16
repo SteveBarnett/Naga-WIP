@@ -10,6 +10,7 @@
 		<li><a href="http://naga.co.za/how-i-do-things/">How I do things</a></li>
 		<li><a href="http://naga.co.za/2015/08/19/my-preferred-front-end-development-process/">FED process</a></li>
 		<li><a href="https://naga.co.za/2016/08/22/user-centered-design-process-again/">UCD process</a></li>
+		<li><a href="https://naga.co.za/sketchnotes/">Sketchnotes</a></li>
 	</ul>
 
 	<ul>
